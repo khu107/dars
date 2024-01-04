@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "start": "mode index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon home.js"
   },
   "author": "",
   "license": "ISC",

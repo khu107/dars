@@ -50,6 +50,7 @@ const server = http.createServer(async (req, res) => {
       ...JSON.parse(data),
       id: uuid.v4(),
     };
+
     users.push(createdData);
     res.writeHead(201, {
       "Content-Type": "application/json",
