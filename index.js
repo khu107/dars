@@ -2,7 +2,7 @@ const http = require("http");
 const uuid = require("uuid");
 const users = [
   {
-    id: 1,
+    id: "1",
     name: "husan",
     surname: "butaev",
     city: "soul",
@@ -10,7 +10,7 @@ const users = [
 ];
 
 // GET - done
-// POST
+// POST - done
 // UPDATE
 // DELETE
 
@@ -55,7 +55,44 @@ const server = http.createServer(async (req, res) => {
       "Content-Type": "application/json",
     });
 
-    res.end(JSON.stringify(users));
+    res.end(JSON.stringify(createdData));
+  } else if (url.match(/\/user\/\w+/) === "/user" && method === "PUT") {
+    const id = url.split("/")[url.split("/").length - 1];
+    const foundUser = users.find(user.id === id);
+    if (!foundUser) return res.end("user canot found");
+
+    const data = JSON.parse(await retriBody(req));
+
+    users.push(createdData);
+    res.writeHead(201, {
+      "Content-Type": "application/json",
+    });
+
+    res.end(
+      JSON.stringify(
+        users.map((user) =>
+          user.id === id
+            ? {
+                ...foundUser,
+                ...data,
+              }
+            : user
+        )
+      )
+    );
+  } else if (url.match(/\/user\/\w+/) === "/user" && method === "DELETE") {
+    const id = url.split("/")[url.split("/").length - 1];
+    const foundUser = users.find(user.id === id);
+    if (!foundUser) return res.end("user canot found");
+
+    const data = JSON.parse(await retriBody(req));
+
+    users.push(createdData);
+    res.writeHead(201, {
+      "Content-Type": "application/json",
+    });
+
+    res.end(JSON.stringify(users.filter((user) => user.id !== id)));
   }
 });
 
