@@ -1,102 +1,30 @@
-const http = require("http");
-const uuid = require("uuid");
-const users = [
-  {
-    id: "1",
-    name: "husan",
-    surname: "butaev",
-    city: "soul",
-  },
-];
-
-// GET - done
-// POST - done
-// UPDATE
-// DELETE
-
-const retriBody = (req) => {
-  return new Promise((resolve, rejects) => {
-    try {
-      let body = "";
-      req.on("data", (chunk) => {
-        body += chunk.toString();
-      });
-
-      req.on("end", () => {
-        resolve(body);
-      });
-    } catch (error) {
-      rejects(error);
-    }
-  });
-};
-
-const server = http.createServer(async (req, res) => {
-  const url = req.url;
-  const method = req.method;
-
-  if (url === "/" && method === "GET") {
-    res.writeHead(200);
-    return res.end("first server");
-  } else if (url === "/users" && method === "GET") {
-    res.writeHead(200, {
-      "Content-Type": "application/json",
-    });
-    return res.end(JSON.stringify(users));
-  } else if (url === "/user" && method === "POST") {
-    const data = await retriBody(req);
-
-    const createdData = {
-      ...JSON.parse(data),
-      id: uuid.v4(),
-    };
-
-    users.push(createdData);
-    res.writeHead(201, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(JSON.stringify(createdData));
-  } else if (url.match(/\/user\/\w+/) === "/user" && method === "PUT") {
-    const id = url.split("/")[url.split("/").length - 1];
-    const foundUser = users.find(user.id === id);
-    if (!foundUser) return res.end("user canot found");
-
-    const data = JSON.parse(await retriBody(req));
-
-    users.push(createdData);
-    res.writeHead(201, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(
-      JSON.stringify(
-        users.map((user) =>
-          user.id === id
-            ? {
-                ...foundUser,
-                ...data,
-              }
-            : user
-        )
-      )
-    );
-  } else if (url.match(/\/user\/\w+/) === "/user" && method === "DELETE") {
-    const id = url.split("/")[url.split("/").length - 1];
-    const foundUser = users.find(user.id === id);
-    if (!foundUser) return res.end("user canot found");
-
-    const data = JSON.parse(await retriBody(req));
-
-    users.push(createdData);
-    res.writeHead(201, {
-      "Content-Type": "application/json",
-    });
-
-    res.end(JSON.stringify(users.filter((user) => user.id !== id)));
-  }
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const cors = require("cors");
+app.use(express.json());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // 모든 도메인에서의 요청을 허용 (* 대신 특정 도메인을 명시할 수 있음)
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // 허용할 HTTP 메서드
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  ); // 허용할 헤더
+  next();
+});
+mongoose
+  .connect(
+    "mongodb+srv://khusan:khusan@cluster0.8mnw2t4.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("db ulandi"))
+  .catch((e) => console.error(e));
+app.use((req, _, next) => {
+  console.log(`URL:${req.url}, method: ${req.method}`);
+  return next();
 });
 
-server.listen(8080, () => {
-  console.log("8080 port eshitayapti");
+app.use(require("./routes"));
+
+app.listen(8080, () => {
+  console.log("server ishga tushdi");
 });
