@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="rectangle">
+      <div class="rectangle-title">Find Your Drem House</div>
+      <div class="rectangle-desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut viverra
+        posuere sem purus enim eleifend habitant arcu, sed.
+      </div>
+      <div class="rectangle-con"></div>
+    </div>
+    <!-- people -->
+
+    <div class="people">
+      <div>
+        <h1>What People Say</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur</p>
+      </div>
+      <div class="cart-body">
+        {{#each people as |value key|}}
+        <div class="cart">
+          <img src="{{value.img}}" alt="" />
+          <p>{{value.name}}</p>
+          <p>{{value.star}}</p>
+          <p>{{value.desc}}</p>
+        </div>
+
+        {{/each}}
+      </div>
+    </div>
+  </body>
+</html>
