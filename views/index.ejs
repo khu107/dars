@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- header -->
+      <header>
+        <%- include('partials/navbar') -%>
+        <div class="user-info">
+          <div class="user-left">
+            <h1>
+              Hi, I am John, <br />
+              Creative Technologist
+            </h1>
+            <p>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim velit mollit.
+              Exercitation veniam consequat sunt nostrud amet.
+            </p>
+            <button>Download Resume</button>
+          </div>
+          <div class="user-right">
+            <img src="/image/user.png" alt="user" />
+          </div>
+        </div>
+      </header>
+
+      <!-- aside  -->
+      <aside>
+        <div class="post">
+          <div class="post-top">
+            <p>Recent posts</p>
+            <p>View all</p>
+          </div>
+          <div class="post-bottom">
+            <% posts.forEach(element => { %>
+            <div class="post-box">
+              <div class="post-title"><%= element.title %></div>
+              <div class="post-date">
+                <%= element.date %> | <%= element.skill %>
+              </div>
+              <div class="post-desc"><%= element.desc %></div>
+            </div>
+
+            <% }) %>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </body>
+</html>
