@@ -50,7 +50,30 @@
             <% }) %>
           </div>
         </div>
+        <div class="featured-works">
+          <p>Featured works</p>
+
+          <div class="featured-items">
+            <% featWorks.forEach(element => { %>
+            <div class="featured-left">
+              <div><img src="<%=element.src %>" /></div>
+              <div class="featured-right">
+                <div class="featured-title"><%=element.title %></div>
+                <div class="date">
+                  <div class="featured-date"><%=element.date %></div>
+                  <div class="featured-text"><%=element.text %></div>
+                </div>
+                <div class="featured-desc"><%=element.desc %></div>
+              </div>
+            </div>
+
+            <% }) %>
+          </div>
+        </div>
       </aside>
+
+      <!-- footer -->
+      <footer><%- include('partials/footer') -%></footer>
     </div>
   </body>
 </html>

@@ -24,6 +24,29 @@ app.get("/", (req, res) => {
         desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
       },
     ],
+    featWorks: [
+      {
+        src: "/image/works1.png",
+        title: "Designing Dashboards",
+        date: "2020",
+        text: "Dashboard",
+        desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      },
+      {
+        src: "/image/works2.png",
+        title: "Vibrant Portraits of 2020",
+        date: "2020",
+        text: "Illustration",
+        desc: "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      },
+      {
+        src: "/image/works3.png",
+        title: "36 Days of Malayalam type",
+        date: "2018",
+        text: "Typography",
+        desc: "Amet minim mollit non deserunt ullamco  st sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+      },
+    ],
   });
 });
 
