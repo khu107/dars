@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/main.css" />
-    <title><%= title %></title>
+    <title><%= home.title %></title>
   </head>
   <body>
     <div class="container">
       <!-- header -->
+      <%- include('partials/navbar') -%>
       <header>
-        <%- include('partials/navbar') -%>
         <div class="user-info">
           <div class="user-left">
             <h1>
@@ -38,7 +38,7 @@
             <p>View all</p>
           </div>
           <div class="post-bottom">
-            <% posts.forEach(element => { %>
+            <% home.posts.forEach(element => { %>
             <div class="post-box">
               <div class="post-title"><%= element.title %></div>
               <div class="post-date">
@@ -54,7 +54,7 @@
           <p>Featured works</p>
 
           <div class="featured-items">
-            <% featWorks.forEach(element => { %>
+            <% home.featWorks.forEach(element => { %>
             <div class="featured-left">
               <div><img src="<%=element.src %>" /></div>
               <div class="featured-right">
