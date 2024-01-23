@@ -239,3 +239,12 @@ footer {
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 10px;
 }
+
+/* work */
+.work-title {
+  margin-top: 70px;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 60px; /* 136.364% */
+}

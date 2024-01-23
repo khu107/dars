@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="blog-page">
+      <div class="blog-head"><%- include('partials/navbar') -%></div>
+
+      <aside>
+        <div class="featured-works">
+          <div class="work-title"><%= home.title %></div>
+
+          <div class="featured-items">
+            <% home.featWorks.forEach(element => { %>
+            <div class="featured-left">
+              <div><img src="<%=element.src %>" /></div>
+              <div class="featured-right">
+                <div class="featured-title"><%=element.title %></div>
+                <div class="date">
+                  <div class="featured-date"><%=element.date %></div>
+                  <div class="featured-text"><%=element.text %></div>
+                </div>
+                <div class="featured-desc"><%=element.desc %></div>
+              </div>
+            </div>
+
+            <% }) %>
+          </div>
+        </div>
+      </aside>
+      <!-- footer -->
+      <footer><%- include('partials/footer') -%></footer>
+    </div>
+  </body>
+</html>
