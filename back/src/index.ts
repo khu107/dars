@@ -1,11 +1,23 @@
-let obj: {
+// type Typeobj = {
+//   name: string;
+//   surname: string;
+//   age: number;
+//   isActive: boolean;
+//   a: number;
+//   b: number;
+// };
+
+// interface
+interface Iobj {
   name: string;
   surname: string;
   age: number;
   isActive: boolean;
   a: number;
   b: number;
-} = {
+}
+
+let obj: Iobj = {
   name: "Khusan",
   surname: "Butaev",
   age: 20,
